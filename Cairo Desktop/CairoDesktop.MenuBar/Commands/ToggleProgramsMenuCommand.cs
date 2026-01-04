@@ -7,6 +7,7 @@ using CairoDesktop.MenuBar.Services;
 using System;
 using System.Collections.Generic;
 using CairoDesktop.Common.Helpers;
+using ManagedShell.Common.Enums;
 
 namespace CairoDesktop.MenuBar.Commands
 {
