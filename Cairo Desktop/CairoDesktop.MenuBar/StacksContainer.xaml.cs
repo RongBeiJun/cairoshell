@@ -49,7 +49,7 @@ namespace CairoDesktop.MenuBar {
             // set popup width in case the display changed
             if (e.ChangedButton == MouseButton.Left && MenuBar != null)
             {
-                PopupWidth = MenuBar.Width;
+                PopupWidth = MenuBar.ActualWidth;
             }
         }
 
