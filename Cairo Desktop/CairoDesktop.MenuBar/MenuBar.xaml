@@ -19,68 +19,54 @@
     <Window.DataContext>
         <l10n:DisplayString />
     </Window.DataContext>
-       <!-- 保持 DockPanel 根（与主题/样式兼容），但内部使用一个居中的 Grid 作为“视觉中心” -->
-    <DockPanel Style="{StaticResource MenuBarStyle}">
-        <Grid>
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <!-- 左侧主菜单 -->
-                <StackPanel Grid.Column="0" Orientation="Horizontal"
-                            VerticalAlignment="Top"
-                            Height="24"
-                            Width="Auto"
-                            x:Name="CairoMenuBar">
-                    <Menu Style="{StaticResource CairoMenuBarMainContainerStyle}">
-                        <MenuItem Style="{StaticResource CairoMenuItemCairoMenuStyle}"
-                                  Name="CairoMenu"
-                                  SubmenuOpened="CairoMenu_Opened">
-                            <MenuItem.Header>
-                                <Image Name="MenuIcon"
-                                       Source="{DynamicResource MenuIcon}"
-                                       Width="38"
-                                       Height="22" />
-                            </MenuItem.Header>
-                            <MenuItem />
-                        </MenuItem>
-                        <MenuItem Header="{Binding Path=(l10n:DisplayString.sProgramsMenu)}"
-                                  Name="ProgramsMenu"
-                                  AllowDrop="True"
-                                  Drop="ProgramsMenu_Drop"
-                                  DragOver="ProgramsMenu_DragOver"
-                                  ItemContainerStyle="{StaticResource CairoMenuItemContainerStyle}"
-                                  TextBlock.FontWeight="SemiBold"
-                                  StaysOpenOnClick="True">
-                            <MenuItem StaysOpenOnClick="True">
-                                <MenuItem.Header>
-                                    <control:ProgramsMenu x:Name="programsMenuControl" />
-                                </MenuItem.Header>
-                            </MenuItem>
-                        </MenuItem>
-                        <MenuItem Header="{Binding Path=(l10n:DisplayString.sPlacesMenu)}"
-                                  Name="PlacesMenu"
-                                  SubmenuOpened="PlacesMenu_Opened"
-                                  TextBlock.FontWeight="SemiBold">
-                            <MenuItem />
-                        </MenuItem>
-                    </Menu>
-                </StackPanel>
-
-                <!-- 中间：StacksContainer -->
-                <control:StacksContainer x:Name="stacksContainer" Grid.Column="1" VerticalAlignment="Top" />
-
-                <!-- 右侧扩展（系统托盘等）-->
-                <StackPanel Grid.Column="2" Orientation="Horizontal"
-                            VerticalAlignment="Top"
-                            Height="24"
-                            x:Name="MenuExtrasHost"
-                            Margin="0,0,0,0">
-                </StackPanel>
-            </Grid>
-        </Grid>
+    <DockPanel Style="{StaticResource MenuBarStyle}" LastChildFill="False">
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    Height="22"
+                    Width="Auto"
+                    x:Name="CairoMenuBar"
+                    DockPanel.Dock="Left">
+            <Menu Style="{StaticResource CairoMenuBarMainContainerStyle}">
+                <MenuItem Style="{StaticResource CairoMenuItemCairoMenuStyle}"
+                          Name="CairoMenu"
+                          SubmenuOpened="CairoMenu_Opened">
+                    <MenuItem.Header>
+                        <Image Name="MenuIcon"
+                               Source="{DynamicResource MenuIcon}"
+                               Width="24"
+                               Height="22" />
+                    </MenuItem.Header>
+                    <MenuItem />
+                </MenuItem>
+                <MenuItem Header="{Binding Path=(l10n:DisplayString.sProgramsMenu)}"
+                          Name="ProgramsMenu"
+                          AllowDrop="True"
+                          Drop="ProgramsMenu_Drop"
+                          DragOver="ProgramsMenu_DragOver"
+                          ItemContainerStyle="{StaticResource CairoMenuItemContainerStyle}"
+                          TextBlock.FontWeight="SemiBold"
+                          StaysOpenOnClick="True">
+                    <MenuItem StaysOpenOnClick="True">
+                        <MenuItem.Header>
+                            <control:ProgramsMenu x:Name="programsMenuControl" />
+                        </MenuItem.Header>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="{Binding Path=(l10n:DisplayString.sPlacesMenu)}"
+                          Name="PlacesMenu"
+                          SubmenuOpened="PlacesMenu_Opened"
+                          TextBlock.FontWeight="SemiBold">
+                    <MenuItem />
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <control:StacksContainer x:Name="stacksContainer" DockPanel.Dock="Left" />
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Top"
+                    Height="22"
+                    x:Name="MenuExtrasHost"
+                    Margin="0,0,0,0"
+                    DockPanel.Dock="Right">
+        </StackPanel>
     </DockPanel>
 </objectModel:CairoAppBarWindow>
