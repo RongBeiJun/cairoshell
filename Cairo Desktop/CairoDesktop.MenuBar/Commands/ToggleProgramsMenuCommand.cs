@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using CairoDesktop.Common.Helpers;
 using ManagedShell.Common.Enums;
+using ManagedShell.AppBar;
 
 namespace CairoDesktop.MenuBar.Commands
 {
