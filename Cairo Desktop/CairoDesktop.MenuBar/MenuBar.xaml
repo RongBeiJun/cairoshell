@@ -19,11 +19,11 @@
     <Window.DataContext>
         <l10n:DisplayString />
     </Window.DataContext>
-    <DockPanel Style="{StaticResource MenuBarStyle}"
-               x:Name="CairoMenuBarContainer">
+    <Border Style="{StaticResource MenuBarStyle}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Top"
-                    Height="24"
+                    Height="22"
                     Width="Auto"
                     x:Name="CairoMenuBar">
             <Menu Style="{StaticResource CairoMenuBarMainContainerStyle}">
@@ -60,6 +60,7 @@
 				</MenuItem>
             </Menu>
         </StackPanel>
+		<control:StacksContainer x:Name="stacksContainer" />
         <StackPanel Orientation="Horizontal"
                     DockPanel.Dock="Right"
                     VerticalAlignment="Top"
