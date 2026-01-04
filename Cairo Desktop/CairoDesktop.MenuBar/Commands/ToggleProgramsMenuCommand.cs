@@ -57,6 +57,15 @@ namespace CairoDesktop.MenuBar.Commands
             {
                 if (!_settings.EnableMenuBarMultiMon || CursorHelper.IsCursorOnScreen(menuBar.Screen))
                 {
+                    // 如果菜单栏处于自动隐藏模式，按 Win 键时只 Peek（显示）菜单栏（不打开 Programs 菜单）
+                    if (_settings.EnableMenuBarAutoHide && menuBar.AppBarMode == AppBarMode.AutoHide)
+                    {
+                        // MenuBar 实现了 IMenuBar.PeekDuringAutoHide（显式接口实现），因此通过接口调用
+                        (menuBar as IMenuBar)?.PeekDuringAutoHide();
+                        return true;
+                    }
+
+                    // 否则保持原有行为：切换 Programs 菜单
                     menuBar.ToggleProgramsMenu();
                     return true;
                 }
