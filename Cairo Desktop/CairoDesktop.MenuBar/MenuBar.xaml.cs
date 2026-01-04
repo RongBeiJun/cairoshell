@@ -55,7 +55,7 @@ namespace CairoDesktop.MenuBar
                 AllowsTransparency = resourceValue;
 
             InitializeComponent();
-            this.SizeToContent = System.Windows.SizeToContent.Width;
+            //this.SizeToContent = System.Windows.SizeToContent.Width;
             
             AutoHideShowDelayMs = _settings.AutoHideShowDelayMs;
             RequiresScreenEdge = true;
